@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title_list_students %}
+<title>Show Students</title>
+ {% endblock %}
+
+{% block list_students %}
+<div>
+    <table class="table table-dark table-hover text-center mt-3 shadow">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Marks</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for row in objs %}
+                <tr>
+                    <td>{{row.rn}}</td>
+                    <td>{{row.fnm}}</td>
+                    <td>{{row.lnm}}</td>
+                    <td>{{row.mk}}</td>
+                    <td>
+                        <a href="{% url 'update_student_url' row.id %}"><button class="btn btn-outline-warning btn-sm ">Update</button></a>
+                        <a href="{% url 'delete_student_url' row.id %}"><button class="btn btn-outline-danger btn-sm ">Delete</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>
+ {% endblock %}
